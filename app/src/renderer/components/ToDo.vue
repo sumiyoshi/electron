@@ -4,9 +4,14 @@
         <div class="title">Todo</div>
 
         <!-- タスク入力 -->
-        <el-input v-model="input" placeholder="タスク名を入力" clearable>
-            <el-button slot="append" size="mini" @click="insertTask">追加</el-button>
-        </el-input>
+        <el-form :model="todoForm" :rules="todoFormRules" ref="todoForm">
+            <el-form-item label="" prop="taskName">
+                <el-input v-model="todoForm.taskName" placeholder="タスク名を入力" clearable>
+                    <el-button slot="append" size="mini" @click="insertTask">追加</el-button>
+                </el-input>
+            </el-form-item>
+        </el-form>
+
         <!-- タスク一覧 -->
         <el-table :data="taskList" :show-header="false" stripe>
             <el-table-column prop="task" width="auto"></el-table-column>
@@ -24,14 +29,25 @@
     data () {
       return {
         taskList: [],
-        input: ''
+        todoForm: {
+          taskName: ''
+        },
+        todoFormRules: {
+          taskName: [
+            { required: true, message: '入力必須です', trigger: 'blur' }
+          ]
+        }
       }
     },
     methods: {
       // タスク追加
       insertTask () {
-        this.taskList.push({task: this.input})
-        this.input = ''
+        this.$refs['todoForm'].validate((valid) => {
+          if (valid) {
+            this.taskList.push({task: this.todoForm.taskName})
+            this.todoForm.taskName = ''
+          }
+        })
       },
       // レコード削除
       deleteTask (index) {
@@ -44,6 +60,6 @@
 <style scoped>
     main.el-main {
         width: 600px;
-        margin: 0px auto;
+        margin: 0 auto;
     }
 </style>
