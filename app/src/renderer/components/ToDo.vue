@@ -1,5 +1,8 @@
 <template>
     <el-main>
+
+        <div class="title">Todo</div>
+
         <!-- タスク入力 -->
         <el-input v-model="input" placeholder="タスク名を入力" clearable>
             <el-button slot="append" size="mini" @click="insertTask">追加</el-button>
