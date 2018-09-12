@@ -1,15 +1,24 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <headerView></headerView>
+        <router-view></router-view>
+        <footerView></footerView>
+    </div>
 </template>
 
 <script>
+  import headerView from './components/share/Header'
+  import footerView from './components/share/Footer'
+
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      headerView,
+      footerView
+    }
   }
 </script>
 
 <style>
-  /* CSS */
+    /* CSS */
 </style>

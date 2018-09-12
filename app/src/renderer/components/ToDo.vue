@@ -34,7 +34,7 @@
         },
         todoFormRules: {
           taskName: [
-            { required: true, message: '入力必須です', trigger: 'blur' }
+            {required: true, message: '入力必須です', trigger: 'blur'}
           ]
         }
       }

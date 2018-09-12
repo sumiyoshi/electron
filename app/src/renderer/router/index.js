@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/ToDo').default
     },
     {
+      path: '/editor',
+      name: 'editor-page',
+      component: require('@/components/Editor').default
+    },
+    {
       path: '*',
       redirect: '/'
     }
