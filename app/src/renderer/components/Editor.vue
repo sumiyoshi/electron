@@ -3,7 +3,6 @@
         <div id="editor">
             <el-input
                     type="textarea"
-                    :rows="10"
                     placeholder="Please input"
                     v-model="input">
             </el-input>
@@ -44,13 +43,17 @@
         color: #333;
     }
 
+    .el-main {
+        padding: 10px 0;
+    }
+
     textarea, #editor div {
         display: inline-block;
         width: 49%;
         height: 100%;
         vertical-align: top;
         box-sizing: border-box;
-        padding: 0 20px;
+        padding: 0 5px;
     }
 
     textarea {
